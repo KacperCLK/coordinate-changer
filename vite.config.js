@@ -4,8 +4,12 @@ import laravel from 'laravel-vite-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/scss/app.scss',  'resources/js/app.js'],
+            input: ['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'],
             refresh: true,
         }),
     ],
+    build: {
+        manifest: true, // To zapewnia generowanie manifest.json
+        outDir: 'public/build', // To ustawia katalog wyjściowy dla plików
+    },
 });
