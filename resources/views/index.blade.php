@@ -34,17 +34,18 @@
                             Proszę w powyższych polach podać współrzędne, układ w jakim zostaną one podane nie ma znaczenia, poniżej zostaną wyświetlone wszystkie możliwości.
                         </div>
 
-                        <button type="submit">Transform</button>
+                        <button type="submit">Konwertuj</button>
                     </form>
                 </div>
 
                 <div class="accordion">
-                    <x-result id="PL1992" content="Układ 1992:"/>
-                    <x-result id="PL2000Zone1" content="Układ 2000 - Strefa 1:"/>
-                    <x-result id="PL2000Zone2" content="Układ 2000 - Strefa 2:"/>
-                    <x-result id="PL2000Zone3" content="Układ 2000 - Strefa 3:"/>
-                    <x-result id="PL2000Zone4" content="Układ 2000 - Strefa 4:"/>
-                    <x-result id="UTM" content="Układ UTM:"/>
+                    <x-result id="Zone1" content="Układ 1992:"/>
+                    <x-result id="Zone2" content="Układ 2000 - Strefa 1:"/>
+                    <x-result id="Zone3" content="Układ 2000 - Strefa 2:"/>
+                    <x-result id="Zone4" content="Układ 2000 - Strefa 3:"/>
+                    <x-result id="Zone5" content="Układ 2000 - Strefa 4:"/>
+                    <x-result id="Zone6" content="Układ UTM - Strefa 33:"/>
+                    <x-result id="Zone7" content="Układ UTM - Strefa 34:"/>
                 </div>
             </div>
         </div>

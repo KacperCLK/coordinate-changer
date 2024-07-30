@@ -1,6 +1,9 @@
 import './bootstrap';
 import proj4 from 'proj4';
 
+const accordionContainer = document.querySelector('.accordion');
+
+// Funkcja wypełniająca współrzędne z Układu 2000
 document.getElementById('coordForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -11,19 +14,22 @@ document.getElementById('coordForm').addEventListener('submit', function(event) 
     const yCoord = parseFloat(formData.get('yCoord'));
     const pl2000Coordinates = [yCoord, xCoord];
     
-    // Definicje układów współrzędnych PL-2000 dla różnych stref
-    const projPL2000AllZones = [
+    // Definicje układów współrzędnych Pl-1992, PL-2000 dla 4 stref
+    const allZones = [
+        '+proj=tmerc +lat_0=0 +lon_0=19 +k=0.9993 +x_0=500000 +y_0=-5300000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
         '+proj=tmerc +lat_0=0 +lon_0=15 +k=0.999923 +x_0=5500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
         '+proj=tmerc +lat_0=0 +lon_0=18 +k=0.999923 +x_0=6500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
         '+proj=tmerc +lat_0=0 +lon_0=21 +k=0.999923 +x_0=7500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
         '+proj=tmerc +lat_0=0 +lon_0=24 +k=0.999923 +x_0=8500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
+        '+proj=utm +zone=33 +datum=WGS84 +units=m +no_defs',
+        '+proj=utm +zone=34 +datum=WGS84 +units=m +no_defs',
     ]
 
     // Definicja układu współrzędnych WGS84
     const projWGS84 = '+proj=longlat +datum=WGS84 +no_defs';
 
-    projPL2000AllZones.forEach((selectedProjPL2000, index) => {
-        const wgs84Coordinates = proj4(selectedProjPL2000, projWGS84, pl2000Coordinates);
+    allZones.forEach((zone, index) => {
+        const wgs84Coordinates = proj4(zone, projWGS84, pl2000Coordinates);
 
         // Konwersja stopni dziesiętnych na stopnie, minuty, sekundy
         function toDMS(coordinate) {
@@ -68,7 +74,7 @@ document.getElementById('coordForm').addEventListener('submit', function(event) 
             const latitudeDMS = toDMS(longitude);
             
             // Wyświetlenie na stronie
-            const resultDiv = document.getElementById(`PL2000Zone${index + 1}`);
+            const resultDiv = document.getElementById(`Zone${index + 1}`);
 
             if (resultDiv) {
                 resultDiv.querySelector('.accordion__content__lat-result').textContent = latitudeDMS;
@@ -81,7 +87,6 @@ document.getElementById('coordForm').addEventListener('submit', function(event) 
                     console.log(`Wystąpił błąd: ${error.message}`);
                 }
             }
-
         }
 
         displayResults(wgs84Coordinates[0], wgs84Coordinates[1])
@@ -90,6 +95,7 @@ document.getElementById('coordForm').addEventListener('submit', function(event) 
     
 });
 
+// Funkcja odpowiadająca za "akordeon"
 document.querySelectorAll('.accordion__label').forEach(label => {
     label.addEventListener('click', function() {
         const contentBox = this.parentElement; // Parent element of the label which is '.accordion__contentBx'
@@ -106,8 +112,7 @@ document.querySelectorAll('.accordion__label').forEach(label => {
     });
 });
 
-const accordionContainer = document.querySelector('.accordion');
-
+// Funkcja dodająca funkcjonalność "kopiowania z ikonki"
 accordionContainer.addEventListener('click', function(event) {
     // Sprawdź, czy kliknięty element to ikona kopiowania
     if (event.target.classList.contains('fa-copy')) {
