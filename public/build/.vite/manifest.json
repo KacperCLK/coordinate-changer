@@ -1,0 +1,23 @@
+{
+  "public/images/background.jpg": {
+    "file": "assets/background-CU5kJAib.jpg",
+    "src": "public/images/background.jpg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-l0sNRNKZ.js",
+    "name": "app",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DvqblLkS.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/scss/app.scss": {
+    "file": "assets/app-D48uOXGy.css",
+    "src": "resources/scss/app.scss",
+    "isEntry": true
+  }
+}
