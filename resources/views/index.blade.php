@@ -19,20 +19,18 @@
     <body>
         <div class="card">
             <div class="grid">
-                <div class="grid__title">Zmiana współrzędnych</div>
+                <div class="grid__title">Coordinate changer</div>
                 <div class="grid__customersCoords">
-                    <div class="grid__subtitle">
-                        Współrzędne:
-                    </div>
                     <form class="grid__customersCoords__form" id="coordForm">
-                        <div class="grid__customersCoords__coodrd-field">
-                            <input type="text" id="xCoord" name="xCoord" placeholder="Szerokość" required>
-                            <input type="text" id="yCoord" name="yCoord" placeholder="Długość" required>
+                        <div class="grid__description">
+                            Proszę w poniższych polach podać współrzędne. Układ nie ma znaczenia, wyświetlone zostaną wszystkie możliwości.
                         </div>
 
-                        <div class="grid__description">
-                            Proszę w powyższych polach podać współrzędne, układ w jakim zostaną one podane nie ma znaczenia, poniżej zostaną wyświetlone wszystkie możliwości.
+                        <div class="grid__customersCoords__coodrd-field">
+                            <input type="text" id="xCoord" name="xCoord" placeholder="Długość" required>
+                            <input type="text" id="yCoord" name="yCoord" placeholder="Szerokość" required>
                         </div>
+
 
                         <button type="submit">Konwertuj</button>
                     </form>

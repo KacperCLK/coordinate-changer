@@ -1,0 +1,88 @@
+.grid {
+    display: grid;
+    grid-template-rows: 5rem 20rem 1fr;
+
+    gap: 1.5rem;
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+    height: 100%;
+    overflow-y: auto;
+    
+    font-size: $font-size-xs;
+    
+    @media only screen and (max-width: $bp-small) { 
+        padding: 0;
+        margin-top: 0;
+        padding-top: 3rem;
+    } 
+
+    &__title{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $color-main-gold-dark;
+
+        font-size: $font-size-l;
+        font-weight: 600;
+        
+        @media only screen and (max-width: $bp-smaller) { 
+            font-size: $font-size-m;
+        } 
+    }
+
+    &__description{
+        margin: auto;
+        text-align: center;
+    }
+
+    &__customersCoords{
+        display: grid;
+        
+        margin: 0 auto;
+        width: 90%;
+
+        justify-content: center;
+
+        &__form {
+            display: grid;
+            grid-template-rows: 30% 20% 30%;
+            gap: 10%;
+        
+            button {
+                width: 100%;
+                justify-self: center;
+                border: none;
+                
+                font-size: $font-size-s;
+                background-color: $color-main-blue;
+                color: $color-main-gold;
+                
+                transition: all 0.3s ease; 
+        
+                &:hover {
+                    cursor: pointer;
+                    background-color: $color-main-blue-light; 
+                }
+            }
+        }
+        
+
+        &__coodrd-field{
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+
+            input{
+                height: 100%;
+                width: 50%;
+                padding: 1rem;
+
+                box-shadow: 0 0 2px rgba($color-main-blue, 0.5);
+                border: none;
+                border-radius: 10px;
+
+                font-size: $font-size-xs;
+            }
+        }
+    }
+}

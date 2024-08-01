@@ -1,0 +1,30 @@
+// RESPONSIVE BREAKPOINTS
+$bp-small: 37.5em;  // 600px
+$bp-smaller: 31.25em;  // 500px
+$bp-smallest: 28.125em;  // 450px
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; //1rem = 10px 10/16=65.5%
+}
+
+body{
+    font-family: $font-1;
+    
+    background: url('/public/images/background.jpg') no-repeat center center;
+    background-size: cover;
+
+    // Ustawia kartę - trochę druciarstwo, ale jest tylko jeden element - karta w całym body.
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
