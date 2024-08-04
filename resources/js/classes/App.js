@@ -1,10 +1,12 @@
 import CoordinateConverter from './CoordinateConverter';
 import Accordion from './Accordion';
+import Tooltip from './Tooltip';
 
 class App {
     constructor() {
         this.coordinateConverter = new CoordinateConverter();
         this.accordion = new Accordion();
+        this.coordinateConverter.setAccordion(this.accordion);
         this.init();
     }
 
@@ -13,9 +15,13 @@ class App {
             event.preventDefault();
             this.handleSubmit(event);
         });
+
+        Tooltip.initialize(); // Inicjalizacja tooltipów
     }
 
     handleSubmit(event) {
+        this.accordion.clearResults(); // Czyszczenie wyników przed konwersją
+        
         const form = event.target;
         const formData = new FormData(form);
         const xCoord = parseFloat(formData.get('xCoord'));

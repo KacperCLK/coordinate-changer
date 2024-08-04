@@ -12,6 +12,7 @@ class CoordinateConverter {
             '+proj=utm +zone=33 +datum=WGS84 +units=m +no_defs',
             '+proj=utm +zone=34 +datum=WGS84 +units=m +no_defs',
         ];
+        this.latitude, this.latitudeDMS, this.longitude, this.longitudeDMS;
     }
 
     convertToWGS84(zone, coordinates) {
@@ -28,39 +29,20 @@ class CoordinateConverter {
         return `${degrees}°${minutes}'${seconds}"${direction}`;
     }
 
-    async getCity(longitude, latitude) {
-        if (!latitude || !longitude) return "Brak!";
-        const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${longitude}&lon=${latitude}`;
-
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Błąd sieci');
-
-            const data = await response.json();
-            return data?.address?.city || data?.address?.town || data?.address?.village || "Brak!";
-        } catch (error) {
-            console.log(`Wystąpił błąd: ${error.message}`);
-            return "Błąd!";
-        }
+    setAccordion(accordion) {
+        this.accordion = accordion;
     }
 
     async displayResults(index, coordinates) {
         const wgs84Coordinates = this.convertToWGS84(this.allZones[index], coordinates);
-        const latitudeDMS = this.toDMS(wgs84Coordinates[1], 'lat');
-        const longitudeDMS = this.toDMS(wgs84Coordinates[0], 'lon');
-        const resultDiv = document.getElementById(`Zone${index + 1}`);
 
-        if (resultDiv) {
-            resultDiv.querySelector('.accordion__content__lat-result').textContent = latitudeDMS;
-            resultDiv.querySelector('.accordion__content__lon-result').textContent = longitudeDMS;
+        this.latitude = wgs84Coordinates[1];
+        this.longitude = wgs84Coordinates[0];
+        this.latitudeDMS = this.toDMS(this.latitude, 'lat');
+        this.longitudeDMS = this.toDMS(this.longitude, 'lon');
 
-            try {
-                const location = await this.getCity(wgs84Coordinates[1], wgs84Coordinates[0]);
-                resultDiv.querySelector('.accordion__label__location').textContent = location;
-            } catch (error) {
-                console.log(`Wystąpił błąd: ${error.message}`);
-            }
-        }
+        // Przypisanie wartości szerokości i długości do odpowiednich divów z wykorzstaniem metody klasy Accordion
+        if (this.accordion) this.accordion.showResults(index, this.latitudeDMS, this.longitudeDMS, this.latitude, this.longitude);
     }
 }
 

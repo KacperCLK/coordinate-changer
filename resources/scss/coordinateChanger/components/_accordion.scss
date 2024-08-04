@@ -1,15 +1,15 @@
-.accordion{
+.accordion {
     width: 90%;
     font-size: $font-size-xs;
     margin: auto;
-    
-    
-    &__contentBx{
+
+
+    &__contentBx {
         margin: 1rem 0;
 
         &.active {
-            .accordion__label{
-                &::before{
+            .accordion__label {
+                &::before {
                     content: "-";
                     transform: translate(-25%, -60%);
                 }
@@ -18,31 +18,32 @@
             .accordion__content {
                 height: 5rem;
                 padding: 1rem;
-                
-                @media only screen and (max-width: $bp-small) { 
+                opacity: 1;
+
+                @media only screen and (max-width: $bp-small) {
                     height: 4rem;
                 }
-                
-                @media only screen and (max-width: $bp-smallest) { 
+
+                @media only screen and (max-width: $bp-smallest) {
                     height: 10rem;
-                } 
+                }
             }
         }
     }
 
-    &__label{
+    &__label {
         position: relative;
         padding: 1rem;
-        
+
         display: grid;
         grid-template-columns: 50% 40%;
-        
+
         background-color: $color-main-blue;
         color: $color-white;
-        
-        cursor: pointer;
 
-        &::before{
+        cursor: pointer;
+    
+        &::before {
             position: absolute;
             top: 50%;
             right: 2rem;
@@ -53,48 +54,51 @@
             transform: translate(0, -50%);
         }
 
-        &:hover{
-            background-color: $color-main-blue-light; 
+        &:hover {
+            background-color: $color-main-blue-light;
         }
     }
 
-    &__content{
+    &__content {
         position: relative;
         display: grid;
         grid-template-columns: 42.5% 5% 42.5% 5% 5%;
-        
+
         padding: 0 1rem;
         height: 0;
-        overflow: hidden;
-        overflow-y: auto;
-        
+
+        opacity: 0;
+
         background-color: $color-white;
         font-size: $font-size-xs;
         transition: 0.5s;
-        
-        @media only screen and (max-width: $bp-small) { 
+
+        @media only screen and (max-width: $bp-small) {
             font-size: $font-size-xxs;
         }
-        
+
         @media only screen and (max-width: $bp-smallest) {
             grid-template-rows: 50% 50%;
             grid-template-columns: 80% 10% 10%;
         }
 
-        &__lat, &__lon, &__change-unit, &__copy{
-            display: flex;
+        &__lat,
+        &__lon,
+        &__change-unit,
+        &__copy {
             align-self: center;
+            display: flex;
         }
 
-        &__change-unit, &__copy{
-            cursor: pointer;
-            
-            &:hover{
+        &__change-unit,
+        &__copy {
+
+            &:hover {
                 color: $color-grey;
             }
         }
-        
-        &__change-unit{
+
+        &__change-unit {
             justify-self: center;
 
             @media only screen and (max-width: $bp-smallest) {
@@ -103,7 +107,8 @@
             }
         }
 
-        &__lat-result, &__lon-result{
+        &__lat-result,
+        &__lon-result {
             margin-left: 1rem;
         }
     }

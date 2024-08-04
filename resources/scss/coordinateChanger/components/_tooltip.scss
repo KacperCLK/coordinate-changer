@@ -1,0 +1,44 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    z-index: 9999;
+
+    width: 120px;
+    padding: 5px 0;
+
+    text-align: center;
+    background-color: black;
+    border-radius: 5px;
+    color: #fff;
+
+    opacity: 0;
+
+    transform: translateX(-50%);
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext.top {
+    bottom: 125%;
+    /* Umieszcza tooltip powyżej elementu */
+}
+
+.tooltip .tooltiptext.bottom {
+    top: 125%;
+    /* Umieszcza tooltip poniżej elementu */
+}
+
+.tooltip.show .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip.fade .tooltiptext {
+    opacity: 0;
+}
